@@ -101,6 +101,7 @@ class VideoLooper:
         # start keyboard handler thread:
         # Event handling for key press, if keyboard control is enabled
         if self._keyboard_control:
+            print(".ini loaded correctly and keyboard listening daemon is running.")
             self._keyboard_thread = threading.Thread(target=self._handle_keyboard_shortcuts, daemon=True)
             self._keyboard_thread.start()
 
@@ -331,6 +332,7 @@ class VideoLooper:
         while self._running:
             event = pygame.event.wait()
             if event.type == pygame.KEYDOWN:
+                print("Keypressed, handling input...")
                 # If pressed key is ESC quit program
                 if event.key == pygame.K_ESCAPE:
                     self._print("ESC was pressed. quitting...")
